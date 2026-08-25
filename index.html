@@ -10,16 +10,24 @@
   h2 { font-size: 1.3em; margin-top: 2em; }
   .updated { color: #666; font-size: 0.9em; }
   ul { padding-left: 1.2em; }
-  .lang-switch { margin-bottom: 2em; }
-  .lang-switch a { text-decoration: none; color: #0066cc; }
-  hr { margin: 3em 0; border: none; border-top: 1px solid #ddd; }
+  .lang-switch { margin-bottom: 2em; display: flex; gap: 8px; }
+  .lang-switch button {
+    font: inherit; padding: 6px 14px; border-radius: 6px; border: 1px solid #ccc;
+    background: #f5f5f5; cursor: pointer;
+  }
+  .lang-switch button.active { background: #0066cc; color: #fff; border-color: #0066cc; }
+  .lang-block { display: none; }
+  .lang-block.active { display: block; }
 </style>
 </head>
 <body>
 
-<div class="lang-switch"><a href="#ru">Русская версия ↓</a></div>
+<div class="lang-switch">
+  <button id="btn-en" onclick="showLang('en')">English</button>
+  <button id="btn-ru" onclick="showLang('ru')">Русский</button>
+</div>
 
-<a id="en"></a>
+<div id="block-en" class="lang-block">
 <h1>SaveVPN — Privacy Policy</h1>
 <p class="updated">Last updated: August 25, 2026</p>
 
@@ -49,12 +57,9 @@
 
 <h2>Contact</h2>
 <p>For privacy-related questions, please reach out through the in-app support option.</p>
+</div>
 
-<hr>
-
-<div class="lang-switch"><a href="#en">English version ↑</a></div>
-
-<a id="ru"></a>
+<div id="block-ru" class="lang-block">
 <h1>SaveVPN — Политика конфиденциальности</h1>
 <p class="updated">Дата последнего обновления: 25 августа 2026</p>
 
@@ -84,6 +89,21 @@
 
 <h2>Контакты</h2>
 <p>По вопросам, связанным с конфиденциальностью, обращайтесь через встроенную в приложение поддержку.</p>
+</div>
+
+<script>
+  function showLang(lang) {
+    document.querySelectorAll('.lang-block').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang-switch button').forEach(el => el.classList.remove('active'));
+    document.getElementById('block-' + lang).classList.add('active');
+    document.getElementById('btn-' + lang).classList.add('active');
+    localStorage.setItem('savevpn-privacy-lang', lang);
+  }
+  var saved = null;
+  try { saved = localStorage.getItem('savevpn-privacy-lang'); } catch (e) {}
+  var browserLang = (navigator.language || 'en').toLowerCase().startsWith('ru') ? 'ru' : 'en';
+  showLang(saved || browserLang);
+</script>
 
 </body>
 </html>
