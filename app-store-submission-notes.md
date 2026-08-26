@@ -3,16 +3,17 @@
 ## 1. Notes for Review (обязательно вставить при подаче)
 
 ```
-This app provides a free trial (2 GB traffic) accessible immediately after
-email verification, with no payment required — please use the "Try it"
-option on the sign-in screen to test core VPN functionality directly.
+The app grants full VPN functionality immediately on first launch — there is
+no sign-in, registration, or account screen to go through.
 
 No in-app purchases are offered; the app does not sell or reference any
 paid content, pricing, or external payment method within its UI.
 ```
 
-Смысл: сразу направить ревьюера на бесплатный триал, чтобы он не искал
-способ "заплатить" и не встал в тупик.
+Смысл: экрана входа/регистрации в этой сборке вообще нет (см. память
+"открытый вход для ревью") — приложение сразу открывается на основном
+экране. Раньше здесь был текст про "Try it"-триал, но кнопки входа сейчас
+не существует вовсе, так что указывать её ревьюеру больше не нужно.
 
 ## 2. Export Compliance (шифрование)
 
@@ -39,10 +40,11 @@ paid content, pricing, or external payment method within its UI.
 Указать примерно так (сверить точные формулировки при заполнении —
 Apple даёт закрытый список категорий):
 
-- **Email Address** — Linked to You — используется для: App Functionality
-  (создание/авторизация аккаунта), не для трекинга.
-- **Device ID** — Linked to You — App Functionality (лимит устройств на
-  аккаунт).
+- **Device ID** — Linked to You — App Functionality (сервер использует его,
+  чтобы выдать доступ к VPN и привязать сессию к устройству).
+- **Email Address** — в ЭТОЙ сборке НЕ указывать: экрана входа/регистрации
+  нет, пользователь email нигде не вводит (см. п.1 — сборка без экрана
+  авторизации). Вернуть этот пункт, когда в апдейте вернётся форма входа.
 - **НЕ отмечать**: Browsing History, Search History, Location, Contacts,
   Financial Info и т.п. — этого приложение не собирает вообще.
 - Трекинг между приложениями/сайтами третьих лиц — **No**.
@@ -56,9 +58,8 @@ SaveVPN — простой и быстрый VPN для безопасного �
 • Частичный режим — VPN только для выбранных приложений
 • Экран для проверки, к каким доменам обращаются приложения при
   подключённом VPN
-• Бесплатный пробный период — 2 ГБ трафика, без ввода платёжных данных
 
-Подключение в одно нажатие, без сложных настроек.
+Подключение в одно нажатие, без сложных настроек и регистрации.
 ```
 
 **English draft:**
@@ -68,9 +69,8 @@ SaveVPN — a simple, fast VPN for secure internet access.
 • Automatic selection of the fastest available server
 • Partial Mode — route only selected apps through the VPN
 • See which domains your apps connect to while VPN is on
-• Free trial — 2 GB of traffic, no payment details required
 
-One-tap connection, no complicated setup.
+One-tap connection, no sign-up, no complicated setup.
 ```
 
 ## 6. Ключевые слова (Keywords, до 100 символов, через запятую)
